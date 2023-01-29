@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\User\SP\" />
+    <Folder Include="Dtos\User\Response\" />
+    <Folder Include="Dtos\User\Request\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HCM.Utilities\HCM.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
