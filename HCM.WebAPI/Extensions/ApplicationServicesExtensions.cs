@@ -1,4 +1,5 @@
 ﻿using HCM.DBCore.Context;
+using HCM.Services.Account;
 using HCM.Services.Token;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -10,6 +11,7 @@ namespace HCM.WebAPI.Extensions
         public static IServiceCollection AddApplicationService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IDatabaseContext, DatabaseContext>();
 
             services.AddDbContext<DatabaseContext>(options =>

@@ -7,13 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\User\SP\" />
-    <Folder Include="Dtos\User\Response\" />
-    <Folder Include="Dtos\User\Request\" />
+    <ProjectReference Include="..\HCM.Utilities\HCM.Utilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HCM.Utilities\HCM.Utilities.csproj" />
+    <Compile Update="GenericResponse\ApiResponseMessage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiResponseMessage.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="GenericResponse\ApiResponseMessage.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApiResponseMessage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

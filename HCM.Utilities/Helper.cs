@@ -17,6 +17,12 @@ namespace HCM.Utilities
         {
             public const string GetUserStoreProcedure = "HCM_PROC_FETCH_USER";
         }
+
+        public struct DBConstants
+        {
+            public const string CREATED_BY = "System User";
+            public const string MODIFIED_BY = "System User";
+        }
     }
 
     
