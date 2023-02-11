@@ -12,6 +12,6 @@ namespace HCM.Services.Account
     public interface IAccountService
     {
         Task<GenericResponse<UserResponseDto>> RegisterUser(RegisterUserRequestDto requestDto);
-        Task<string> LoginUser(LoginUserRequestDto requestDto);
+        Task<GenericResponse<UserResponseDto>> LoginUser(LoginUserRequestDto requestDto);
     }
 }

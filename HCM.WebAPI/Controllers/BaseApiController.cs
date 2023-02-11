@@ -3,7 +3,7 @@
 namespace HCM.WebAPI.Controllers
 {
     [ApiController]
-    [Route("api/{controller}/[action]")]
+    [Route("api/[controller]/[action]")]
     public class BaseApiController : ControllerBase
     {
     }

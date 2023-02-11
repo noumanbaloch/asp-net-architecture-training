@@ -54,15 +54,23 @@ namespace HCM.Services.Account
             userRepo.Add(user);
 
             await _unitOfWork.CommitAsync();
+
+            var response = new UserResponseDto()
+            {
+                UserName = user.UserName,
+                Token = _tokenService.CreateToken(user)
+            };
+
+            return GenericResponse<UserResponseDto>.Success(response, ApiResponseMessage.RecordSavedSuccessfully, Models.Enums.ApiStatusCode.RecordSavedSuccessfully);
         }
 
-        public async Task<string> LoginUser(LoginUserRequestDto requestDto)
+        public async Task<GenericResponse<UserResponseDto>> LoginUser(LoginUserRequestDto requestDto)
         {
             var user = await _unitOfWork.GetRepsitory<UserEntity>().FindByFirstOrDefaultAsync(x => x.UserName == requestDto.UserName && x.Deleted == false);
         
-            if(user == null)
+            if(IsNullOrEmpty(user))
             {
-                return "USername is incorrect";
+                return GenericResponse<UserResponseDto>.Failure(ApiResponseMessage.InvalidUserName, Models.Enums.ApiStatusCode.InvalidUserName);
             }
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
@@ -72,11 +80,17 @@ namespace HCM.Services.Account
             {
                 if (computedHash[i] != user.PasswordHash[i])
                 {
-                    return "Invalid password";
+                    return GenericResponse<UserResponseDto>.Failure(ApiResponseMessage.InvalidPassword, Models.Enums.ApiStatusCode.InvalidPassword);
                 }
             }
 
-            return "Logged in";
+            var response = new UserResponseDto()
+            {
+                UserName = user.UserName,
+                Token = _tokenService.CreateToken(user)
+            };
+
+            return GenericResponse<UserResponseDto>.Success(response, ApiResponseMessage.RecordSavedSuccessfully, Models.Enums.ApiStatusCode.RecordSavedSuccessfully);
 
         }
 

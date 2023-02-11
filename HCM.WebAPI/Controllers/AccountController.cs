@@ -1,5 +1,6 @@
 ﻿using HCM.Models.Dtos.User.Request;
 using HCM.Services.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HCM.WebAPI.Controllers

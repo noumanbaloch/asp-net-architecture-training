@@ -13,9 +13,14 @@ namespace HCM.Utilities
             return DateTime.Now;
         }
 
+        public static bool IsNullOrEmpty(object obj)
+        {
+            return  obj is null;
+        }
+
         public struct StoreProcedureNames
         {
-            public const string GetUserStoreProcedure = "HCM_PROC_FETCH_USER";
+            public const string GetUserStoreProcedure = "GJS_PROC_Fetch_User";
         }
 
         public struct DBConstants
@@ -24,6 +29,4 @@ namespace HCM.Utilities
             public const string MODIFIED_BY = "System User";
         }
     }
-
-    
 }

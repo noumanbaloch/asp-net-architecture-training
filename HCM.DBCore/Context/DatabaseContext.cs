@@ -15,7 +15,9 @@ namespace HCM.DBCore.Context
             base.OnModelCreating(modelBuilder);
         }
 
+        #region User
         public DbSet<UserEntity> UserEntity { get; set; }
+        #endregion
 
     }
 }

@@ -1,6 +1,8 @@
 ﻿using HCM.DBCore.Context;
+using HCM.DBCore.UnitOfWork;
 using HCM.Services.Account;
 using HCM.Services.Token;
+using HCM.WebAPI.MappingProfiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -13,6 +15,9 @@ namespace HCM.WebAPI.Extensions
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IDatabaseContext, DatabaseContext>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IDatabaseContext, DatabaseContext>();
+            services.AddAutoMapper(typeof(AutoMappingProfile).Assembly);
 
             services.AddDbContext<DatabaseContext>(options =>
             {
